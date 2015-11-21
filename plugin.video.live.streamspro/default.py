@@ -453,7 +453,7 @@ def parse_m3u(data):
                 continue
             elif mode_type == 'ftv':
                 stream_url = 'plugin://plugin.video.F.T.V/?name='+urllib.quote(channel_name) +'&url=' +stream_url +'&mode=125&ch_fanart=na'
-        addLink(stream_url, channel_name,thumbnail,'','','','','',None,'',total)
+        addLink(stream_url, channel_name,thumbnail,'','','','','','','','',None,'',total)
 def getChannelItems(name,url,fanart):
         soup = getSoup(url)
         channel_list = soup.find('channel', attrs={'name' : name.decode('utf-8')})
@@ -745,6 +745,7 @@ def getItems(items,fanart):
                     raise
             except:
                 genre = ''
+
             try:
                 director = item('director')[0].string
                 if director == None:
@@ -757,12 +758,14 @@ def getItems(items,fanart):
                     raise
             except:
                 rating = ''
+
             try:
                 writer = item('writer')[0].string
                 if writer == None:
                     raise
             except:
                 writer = ''
+
             try:
                 date = item('date')[0].string
                 if date == None:
